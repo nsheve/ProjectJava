@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.0.1">
+    <title>Clients</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/pricing/">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- Bootstrap core CSS -->
+    <link href="../assets/dist/css/bootstrap.css" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+    <h3 class="my-0 mr-md-auto font-weight-normal">Library</h3>
+    <nav class="my-2 my-md-0 mr-md-3">
+        <!--        <input id="navSearch" class="form-control form-control-dark w-100" type="text" placeholder="Search"-->
+        <!--               aria-label="Search">-->
+        <a class="p-2 text-dark" href="/journal"> <span data-feather="home"></span> Journal</a>
+        <a class="p-2 text-dark" href="/clients"> <span data-feather="users"></span> Clients</a>
+        <a class="p-2 text-dark" href="/books"> <span data-feather="shopping-cart"></span> Books <span class="sr-only">(current)</span></a>
+        <a class="p-2 text-dark" href="/bookTypes">  <span data-feather="book-open"> BookTypes  </span> </a>
+    </nav>
+    <a class="btn btn-outline-primary" href="/registration">Sign out</a>
+</div>
+
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Clients</h1>
+    <p class="lead">This page is for interacting with the "Clients" table. Please select an action from the suggestions below.</p>
+</div>
+
+<div class="container">
+    <div class="card-deck mb-3 text-center">
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">Add</h4>
+            </div>
+            <div class="card-body">
+                <form class="form-group my-2 my-lg-0" onsubmit="addRow();return false;">
+                    <input id="FirstName" type="text" class="form-control mr-sm-2" placeholder="FirstName"
+                           aria-label="FirstName" required>
+                    <input id="LastName" type="text" class="form-control mr-sm-2" placeholder="LastName"
+                           aria-label="LastName" required>
+                    <input id="PatherName" type="text" class="form-control mr-sm-2" placeholder="PatherName"
+                           aria-label="PatherName">
+                    <input id="PassportSeria" type="text" class="form-control mr-sm-2" placeholder="PassportSeria"
+                           aria-label="PassportSeria">
+                    <input id="PassportNum" type="text" class="form-control mr-sm-2" placeholder="PassportNum"
+                           aria-label="PassportNum" required>
+                    <input type="submit" name="subm" class="btn btn-lg btn-block btn-outline-primary" value="Add"/>
+                </form>
+            </div>
+        </div>
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">Delete</h4>
+            </div>
+            <div class="card-body">
+                <form class="form-group my-2 my-lg-0" onsubmit="deleteClient();return false;">
+                    <input id="idForDelete" type="number" class="form-control mr-sm-2" placeholder="Id"
+                           aria-label="Id" step="1" min="1" required>
+                    <input type="submit" name="deleteSubmit" class="btn btn-lg btn-block btn-outline-primary"
+                           value="Delete"/>
+                </form>
+            </div>
+        </div>
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">Update</h4>
+            </div>
+            <div class="card-body">
+                <form class="form-group my-2 my-lg-0" onsubmit="updateClient();return false;">
+                    <input id="IdOfUpdatedClient" type="number" class="form-control mr-sm-2" placeholder="Id"
+                           aria-label="Id" step="1" min="1" required>
+                    <input id="FirstNameToUpdate" type="text" class="form-control mr-sm-2"
+                           placeholder="new FirstName" aria-label="new FirstName">
+                    <input id="LastNameToUpdate" type="text" class="form-control mr-sm-2" placeholder="new LastName"
+                           aria-label="new LastName">
+                    <input id="PatherNameToUpdate" type="text" class="form-control mr-sm-2"
+                           placeholder="new PatherName" aria-label="new PatherName">
+                    <input id="PassportSeriaToUpdate" type="text" class="form-control mr-sm-2"
+                           placeholder="new PassportSeria" aria-label="new PassportSeria">
+                    <input id="PassportNumToUpdate" type="text" class="form-control mr-sm-2"
+                           placeholder="new PassportNum" aria-label="new PassportNum">
+
+                    <input type="submit" name="updateSubmit" class="btn btn-lg btn-block btn-outline-primary"
+                           value="Update"/>
+                </form>
+            </div>
+        </div>
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">Search</h4>
+            </div>
+            <form class="form-group my-2 my-lg-0" onsubmit="getClient();return false;">
+                <input id="idForSearch" type="number" class="form-control mr-sm-2" placeholder="Id"
+                       aria-label="Id" step="1" min="1" required>
+                <input type="submit" name="getSubmit" class="btn btn-lg btn-block btn-outline-primary"
+                       value="Search"/>
+            </form>
+            <!--            <input id="navSearch" class="form-control form-control-dark w-100" type="text" placeholder="Search"-->
+            <!--                   aria-label="Search">-->
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Clients</h4>
+    </div>
+    <div class="table">
+        <table id="table" class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>PatherName</th>
+                <th>PassportSeria</th>
+                <th>PassportNum</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="client : ${clientList}">
+                <td><span th:text="${client.id}"></span></td>
+                <td><span th:text="${client.firstName}"></span></td>
+                <td><span th:text="${client.lastName}"></span></td>
+                <td><span th:text="${client.patherName}"></span></td>
+                <td><span th:text="${client.passportSeria}"></span></td>
+                <td><span th:text="${client.passportNum}"></span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
+<script src="../assets/dist/js/bootstrap.bundle.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+
+<script type="text/javascript" th:src="@{/js/Clients.js}"></script>
+</body>
+</html>
